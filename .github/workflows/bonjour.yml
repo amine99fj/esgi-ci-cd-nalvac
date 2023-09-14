@@ -11,6 +11,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install --yes cowsay # si tu me poses des question c'est oui
       - run: cat README.md. | cowsay # Affiche le contenu du fichier `README.md` à la base du dépôt
+      - uses: action/setup-node@v3 # Permet définir une version de node sur laquelle le projet va tourner
+        with:
+          node-version: 18
       - run: npm install
       - run: npm run lint
     
