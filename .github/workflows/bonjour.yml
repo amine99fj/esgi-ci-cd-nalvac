@@ -11,3 +11,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install --yes cowsay # si tu me poses des question c'est oui
       - run: cat README.md. | cowsay # Affiche le contenu du fichier `README.md` à la base du dépôt
+      - run: npm install
+      - run: npm run lint
+    
