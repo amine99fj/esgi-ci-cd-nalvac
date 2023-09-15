@@ -8,6 +8,6 @@ jobs:
       IMAGE_NAME: "mynode:19"
     steps:
       - uses: actions/checkout@v4 # Récupère le contenu de mon dépôt git
-      - run: docker build image --tag="${IMAGE_NAME}" ./
+      - run: docker image build --tag="${IMAGE_NAME}" ./
       - run: docker container run "${IMAGE_NAME}" npm run lint 
     
