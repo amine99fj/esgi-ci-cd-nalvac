@@ -8,6 +8,9 @@ jobs:
       IMAGE_NAME: "mynode:19"
     steps:
       - uses: actions/checkout@v4 # Récupère le contenu de mon dépôt git
+      - uses: hadolint/hadolint-action@v3.1.0
+        with:
+         dockerfile: Dockerfile
       - run: docker image build --tag="${IMAGE_NAME}" ./
       - run: docker container run "${IMAGE_NAME}" npm run lint 
     
