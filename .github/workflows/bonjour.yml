@@ -4,20 +4,11 @@ on:
 jobs:
   dire_bonjour:
     runs-on: ubuntu-22.04
-    container:
-      image: ghcr.io/dduportal/esgi-gitpod
-      options: --user=root
+    env: 
+      IMAGE_NAME: "mynode:19"
     steps:
       - uses: actions/checkout@v4 # Récupère le contenu de mon dépôt git
-      - run: ls -l # Liste les fichier du répertoire courant
-      - run: |
-          sudo apt-get update
-          sudo apt-get install --yes cowsay # si tu me poses des question c'est oui
-      - run: cat README.md. | cowsay # Affiche le contenu du fichier `README.md` à la base du dépôt
       - uses: actions/setup-node@v3 # Permet définir une version de node sur laquelle le projet va tourner
-        with:
-          node-version: 18
-          cache: 'npm'
-      - run: npm install
-      - run: npm run lint
+      - run: docker build image --tag="${IMAGE_NAME}"
+      - run: docker container run "${IMAGE_NAME}" npm run lint 
     
