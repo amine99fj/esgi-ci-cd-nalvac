@@ -1,6 +1,7 @@
 name: Bonjour
 on:
-  - push
+  pull_request:
+      branches: [ 'feat*' ]
 jobs:
   dire_bonjour:
     runs-on: ubuntu-22.04
