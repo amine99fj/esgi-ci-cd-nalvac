@@ -8,7 +8,6 @@ jobs:
       IMAGE_NAME: "mynode:19"
     steps:
       - uses: actions/checkout@v4 # Récupère le contenu de mon dépôt git
-      - uses: actions/setup-node@v3 # Permet définir une version de node sur laquelle le projet va tourner
       - run: docker build image --tag="${IMAGE_NAME}" ./
       - run: docker container run "${IMAGE_NAME}" npm run lint 
     
